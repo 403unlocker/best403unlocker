@@ -1,7 +1,12 @@
 <!-- ABOUT THE PROJECT -->
 ## About speed-test-dns
 
-I had so many concerns in chossing the best dns sni proxy server thats fits my internet service provider so I develope an script that tests the speed of the DNSs so I won't waste my time on finding the best DNS server
+I had so many concerns in chossing the best dns sni proxy server thats fits my internet service provider so I develope an script that tests the speed of the DNSs so I won't waste my time on finding the best DNS server  
+
+      
+![output](https://github.com/ArmanTaheriGhaleTaki/speed-test-dns/assets/88885103/d83c954e-5f3c-434e-ae4b-f119d69a4220)    
+
+
 
 <!-- GETTING STARTED -->
 ## Getting Started
