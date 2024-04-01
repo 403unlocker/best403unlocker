@@ -25,8 +25,11 @@ you only need **docker** installed and you can edit variables in  [Dockerfile](h
 
   ```sh
   git clone https://github.com/ArmanTaheriGhaleTaki/speed-test-dns/ && cd speed-test-dns && docker build -t speedtestdns . && docker run speedtestdns
-  ```
-
+  ```    
+or you can use built image uploaded in dockerhub    
+  ```sh
+  docker run armantaherighaletaki/speed-test-dns
+  ```   
 ## Contributing
 
 you can add new DNS servers in [Dockerfile](https://github.com/ArmanTaheriGhaleTaki/speed-test-dns/blob/main/Dockerfile) with the following format
