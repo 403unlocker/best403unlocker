@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/ArmanTaheriGhaleTaki/speed-test-dns/compare/1.0.0...1.1.0) (2024-04-11)
+
+
+### Features
+
+* add CONTRIBUTING.md ([c8ab6b8](https://github.com/ArmanTaheriGhaleTaki/speed-test-dns/commit/c8ab6b833af051fcca711347e6880bcbaa4cb891))
+
 # 1.0.0 (2024-04-11)
 
 
