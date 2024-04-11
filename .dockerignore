@@ -1,2 +1,4 @@
-database
-README.md
+*.md
+.dockerignore 
+.github/*
+.git
