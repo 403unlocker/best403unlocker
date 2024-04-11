@@ -1,5 +1,5 @@
 <!-- ABOUT THE PROJECT -->
-## About speed-test-dns
+## About best403unlocker
 
 I had so many challenge in choosing the best DNS sni proxy server thats fits my internet service provider so I develope an script that tests the speed of the DNSs so I won't waste my time on finding the best DNS server  
 
@@ -13,16 +13,16 @@ I had so many challenge in choosing the best DNS sni proxy server thats fits my 
 you can use this script with **docker** 
 
 ## docker
-you only need **docker** installed and you can edit variables in  [.env](https://github.com/ArmanTaheriGhaleTaki/speed-test-dns/blob/main/.env) for your needs.
+you only need **docker** installed and you can edit variables in  [.env](https://github.com/ArmanTaheriGhaleTaki/best403unlocker/blob/main/.env) for your needs.
  
 
   ```sh
-  git clone https://github.com/ArmanTaheriGhaleTaki/speed-test-dns/ && cd speed-test-dns && docker build -t speedtestdns . && docker run --env-file .env speedtestdns
+  git clone https://github.com/ArmanTaheriGhaleTaki/best403unlocker/ && cd best403unlocker && docker build -t speedtestdns . && docker run --env-file .env speedtestdns
   ```    
 or you can use built image uploaded in dockerhub      
-  *for that case you need to use [.env](https://github.com/ArmanTaheriGhaleTaki/speed-test-dns/blob/main/.env) at run time*
+  *for that case you need to use [.env](https://github.com/ArmanTaheriGhaleTaki/best403unlocker/blob/main/.env) at run time*
   ```sh
-  wget -c https://raw.githubusercontent.com/ArmanTaheriGhaleTaki/speed-test-dns/main/.env && docker run --env-file .env armantaherighaletaki/speed-test-dns 
+  wget -c https://raw.githubusercontent.com/ArmanTaheriGhaleTaki/best403unlocker/main/.env && docker run --env-file .env armantaherighaletaki/best403unlocker 
   ```   
 
 <!-- CONTACT -->
@@ -30,7 +30,7 @@ or you can use built image uploaded in dockerhub
 
 my social media - [@armondy🙄](https://twitter.com/taherighaletaki) - armantahery1381@gmail.com
 
-Project Link:  [speed-test-dns](https://github.com/ArmanTaheriGhaleTaki/speed-test-dns) 
+Project Link:  [best403unlocker](https://github.com/ArmanTaheriGhaleTaki/best403unlocker) 
 
 
 

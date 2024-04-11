@@ -22,7 +22,7 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/speed-test-dns:latest
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/best403unlocker:latest
   release:
       needs: deploy
       runs-on: ubuntu-latest
