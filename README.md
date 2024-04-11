@@ -10,29 +10,23 @@ I had so many challenge in choosing the best DNS sni proxy server thats fits my 
 
 <!-- GETTING STARTED -->
 ## Getting Started
-you can use this script with **docker** or on **bare metal** 
-## bare metal
-you need **root** accsses and **wget** package    
-you can edit variables and customize the scripts for your needs [bash.sh](https://github.com/ArmanTaheriGhaleTaki/speed-test-dns/blob/main/bash.sh).
+you can use this script with **docker** 
 
-```sh
-git clone https://github.com/ArmanTaheriGhaleTaki/speed-test-dns/ && cd speed-test-dns&& sed -i '2,4 s/^#//' bash.sh && sudo apt update && sudo apt install -y wget && sudo bash bash.sh
-```
 ## docker
-you only need **docker** installed and you can edit variables in  [Dockerfile](https://github.com/ArmanTaheriGhaleTaki/speed-test-dns/blob/main/Dockerfile) for your needs.
-
-[**suggested**] using docker 
+you only need **docker** installed and you can edit variables in  [.env](https://github.com/ArmanTaheriGhaleTaki/speed-test-dns/blob/main/.env) for your needs.
+ 
 
   ```sh
-  git clone https://github.com/ArmanTaheriGhaleTaki/speed-test-dns/ && cd speed-test-dns && docker build -t speedtestdns . && docker run speedtestdns
+  git clone https://github.com/ArmanTaheriGhaleTaki/speed-test-dns/ && cd speed-test-dns && docker build -t speedtestdns . && docker run --env-file .env speedtestdns
   ```    
-or you can use built image uploaded in dockerhub    
+or you can use built image uploaded in dockerhub      
+  *for that case you need to use [.env](https://github.com/ArmanTaheriGhaleTaki/speed-test-dns/blob/main/.env) at run time*
   ```sh
-  docker run armantaherighaletaki/speed-test-dns
+  wget -c https://raw.githubusercontent.com/ArmanTaheriGhaleTaki/speed-test-dns/main/.env && docker run --env-file .env armantaherighaletaki/speed-test-dns 
   ```   
 ## Contributing
 
-you can add new DNS servers in [Dockerfile](https://github.com/ArmanTaheriGhaleTaki/speed-test-dns/blob/main/Dockerfile) with the following format
+you can add new DNS servers in [.env](https://github.com/ArmanTaheriGhaleTaki/speed-test-dns/blob/main/.env) with the following format
 ```
 #########################
 #https://example.com/
