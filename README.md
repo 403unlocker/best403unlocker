@@ -17,7 +17,7 @@ you only need **docker** installed and you can edit variables in  [.env](https:/
  
 
   ```sh
-  git clone https://github.com/ArmanTaheriGhaleTaki/best403unlocker/ && cd best403unlocker && docker build -t speedtestdns . && docker run --env-file .env speedtestdns
+  git clone --depth 1 https://github.com/ArmanTaheriGhaleTaki/best403unlocker/ && cd best403unlocker && docker build -t speedtestdns . && docker run --env-file .env speedtestdns
   ```    
 or you can use built image uploaded in dockerhub      
   *for that case you need to use [.env](https://github.com/ArmanTaheriGhaleTaki/best403unlocker/blob/main/.env) at run time*
