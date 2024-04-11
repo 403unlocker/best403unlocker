@@ -23,3 +23,18 @@ jobs:
         with:
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/speed-test-dns:latest
+  release:
+      needs: deploy
+      runs-on: ubuntu-latest
+      if: github.event_name == 'push'
+      steps:
+            - uses: actions/checkout@v3
+            - uses: actions/setup-node@v3
+              with:
+                  node-version: 17
+
+            - run: cp .github/.releaserc.yml .
+            - run: npm i -g semantic-release @semantic-release/changelog @semantic-release/git
+            - run: semantic-release
+              env:
+                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
