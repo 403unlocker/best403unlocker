@@ -23,7 +23,7 @@ rm /tmp/$1
 
 # Execute the functions
 touch database
-cp /etc/resolv.conf /etc/resolv.conf.bak
+cp /etc/resolv.conf /etc/resolv.conf.bakup
 for i in $dns
 do
 change_dns $i
@@ -34,4 +34,4 @@ echo '*********************'
 echo best dns server is `sort -rn database| head -1| cut -d'/' -f3 | tee -a output`
 echo '*********************'
 rm database
-cat /etc/resolv.conf.bak > /etc/resolv.conf
+cat /etc/resolv.conf.bakup > /etc/resolv.conf
