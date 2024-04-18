@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/ArmanTaheriGhaleTaki/best403unlocker/compare/1.1.0...1.2.0) (2024-04-18)
+
+
+### Features
+
+* add new pishgaman dns ([#11](https://github.com/ArmanTaheriGhaleTaki/best403unlocker/issues/11)) ([39848ce](https://github.com/ArmanTaheriGhaleTaki/best403unlocker/commit/39848ce3c757b39692e201a40643cd38ba7f6a8e))
+
 # [1.1.0](https://github.com/ArmanTaheriGhaleTaki/speed-test-dns/compare/1.0.0...1.1.0) (2024-04-11)
 
 
