@@ -1,4 +1,5 @@
 # Functions
+printf '\e[2J'
 function change_dns () {
 
 	echo 'nameserver'  $1> /etc/resolv.conf
