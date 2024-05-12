@@ -1,10 +1,11 @@
 # Functions
 check_and_source_env() {
-    if [ -f ./.env ]; then
-    else
+if  [ -z "$dns" ]; then
+    if [ ! -f ./.env ]; then
             wget -c https://raw.githubusercontent.com/ArmanTaheriGhaleTaki/best403unlocker/main/.env
-    fi    
+    fi
  source .env
+ fi
 }
 
 function change_dns () {
@@ -44,3 +45,4 @@ echo best dns server is `sort -rn database| head -1| cut -d'/' -f3 | tee -a outp
 echo '*********************'
 rm database
 cat /etc/resolv.conf.bakup > /etc/resolv.conf
+
