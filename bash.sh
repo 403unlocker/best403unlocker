@@ -1,4 +1,12 @@
 # Functions
+check_and_source_env() {
+    if [ -f ./.env ]; then
+    else
+            wget -c https://raw.githubusercontent.com/ArmanTaheriGhaleTaki/best403unlocker/main/.env
+    fi    
+ source .env
+}
+
 function change_dns () {
 
 	echo 'nameserver'  $1> /etc/resolv.conf
@@ -22,6 +30,7 @@ rm /tmp/$1
 
 
 # Execute the functions
+check_and_source_env
 touch database
 cp /etc/resolv.conf /etc/resolv.conf.bakup
 for i in $dns
