@@ -10,7 +10,13 @@ I had so many challenges in choosing the best DNS sni proxy server that fits my 
 
 ## Getting Started
 
-You can use this script with **docker**
+You can use this script with **docker** or run in **baremetal**   
+
+## Baremetal
+Also you can run this script on **baremetal** with **sudo** privilege
+```sh
+wget -c https://raw.githubusercontent.com/ArmanTaheriGhaleTaki/best403unlocker/main/bash.sh && sudo bash bash.sh
+```
 
 ## Docker
 
@@ -26,8 +32,6 @@ or you can use built image uploaded in dockerhub
 ```sh
 wget -c https://raw.githubusercontent.com/ArmanTaheriGhaleTaki/best403unlocker/main/.env && docker run --env-file .env armantaherighaletaki/best403unlocker
 ```
-
-<!-- CONTACT -->
 
 ## Contact
 
