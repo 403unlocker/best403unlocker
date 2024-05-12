@@ -10,7 +10,7 @@ I had so many challenges in choosing the best DNS sni proxy server that fits my 
 
 ## Getting Started
 
-You can use this script with **docker** or run in **Baremetal**   
+You can use this script with **docker** or run in **baremetal**   
 
 ## Baremetal
 Also you can run this script on **baremetal** with **sudo** privilege
