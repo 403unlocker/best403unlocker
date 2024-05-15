@@ -8,6 +8,17 @@ if  [ -z "$dns" ]; then
  fi
 }
 
+check_ip() {
+    local input=$1
+    local regex="^((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$"
+
+    if [[ $input =~ $regex ]]; then
+            return 0
+    else
+            return 1
+    fi
+}
+
 function change_dns () {
 
 	echo 'nameserver'  $1> /etc/resolv.conf
@@ -36,9 +47,11 @@ touch database
 cp /etc/resolv.conf /etc/resolv.conf.bakup
 for i in $dns
 do
+	if check_ip $i; then
 change_dns $i
 download $i
 download_speed $i
+	fi
 done
 echo '*********************'
 echo best dns server is `sort -rn database| head -1| cut -d'/' -f3 | tee -a output`
