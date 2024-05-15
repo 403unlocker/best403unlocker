@@ -44,7 +44,35 @@ best_dns_finder() {
     selected_options=($(echo $choices | tr -d '"'))
     # Check if "docker" is in the selected options
     if [[ " ${selected_options[@]} " =~ " docker " ]]; then
-	docker run --env-file .env armantaherighaletaki/best403unlocker | tee log.txt 2>&1 
+	docker run --env-file .env armantaherighaletaki/best403unlocker 2>&1 | tee log.txt
+    status=$?
+
+    if [ $status -eq 0 ] && grep -q permission log.txt; then
+        while true; do
+            password=$(whiptail --title "Permission Denied" --passwordbox "Input your sudo password" 15 60 3>&1 1>&2 2>&3)
+            local password_status=$?
+            if [ $password_status -eq 0 ]; then
+                echo $password | sudo -S docker run --env-file .env armantaherighaletaki/best403unlocker 2>&1 | tee -a log.txt
+                status=$?
+                if [ $status -ne 0 ]; then
+                    break
+                fi
+            else
+                main
+            fi
+        done
+    fi
+
+    if [ $status -eq 0 ]; then
+        whiptail --title "Error" --yesno "An error occurred. See log.txt for more info.\nDo you want to try again?" 15 60
+        status=$?
+        if [ $status -eq 0 ]; then
+            best_dns_finder
+        else
+            main
+        fi
+    fi
+    
     else 
 	wget -c https://raw.githubusercontent.com/ArmanTaheriGhaleTaki/best403unlocker/main/bash.sh && sudo bash bash.sh  | tee log.txt 2>&1
     fi
