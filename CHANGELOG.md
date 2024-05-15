@@ -1,3 +1,10 @@
+# [1.3.0](https://github.com/ArmanTaheriGhaleTaki/best403unlocker/compare/1.2.0...1.3.0) (2024-05-15)
+
+
+### Features
+
+* add IP checker ([7cdc555](https://github.com/ArmanTaheriGhaleTaki/best403unlocker/commit/7cdc5556d0d6a901fd16055f3d1051555138bd18))
+
 # [1.2.0](https://github.com/ArmanTaheriGhaleTaki/best403unlocker/compare/1.1.0...1.2.0) (2024-04-18)
 
 
