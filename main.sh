@@ -5,7 +5,7 @@ source .env
 main_menu() {
     choice=$(whiptail --title "Best403Unlcoker TUI" --menu "Choose an option:" 15 60 4 \
     "Run DNS analyzer" "find the most speedful dns" \
-    "Save file" "Downlaod file with best dns" \
+    "Save file" "Downlaod file with the best dns" \
     "Advance setting" "change configuration" \
     "Exit" "Exit the program" \
     3>&1 1>&2 2>&3)
@@ -29,7 +29,7 @@ main_menu() {
 }
 
 best_dns_finder() {
-    file_url=$(whiptail --title "add test file url" --inputbox "please type your url that you wnat to be checked" 15 60 "$file_url" 3>&1 1>&2 2>&3)
+    file_url=$(whiptail --title "add test file url" --inputbox "please type your url that you want to be checked" 15 60 "$file_url" 3>&1 1>&2 2>&3)
 
 # Replace the value of file_url with the value of the file_url environment variable
 
