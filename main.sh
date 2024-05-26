@@ -32,6 +32,10 @@ main_menu() {
 best_dns_finder() {
     file_url=$(whiptail --title "add test file url" --inputbox "please type your url that you want to be checked" 15 60 "$file_url" 3>&1 1>&2 2>&3)
 
+    if [ $? -eq 1 ]; then
+        main
+    fi
+
 # Replace the value of file_url with the value of the file_url environment variable
 
     if grep -q "^file_url=" ".env" ; then
@@ -80,6 +84,10 @@ download_file_with_best_dns() {
 
     file_url=$(whiptail --title "add file url" --inputbox "please type the url that you wnat to be downloaded" 15 60 "$file_url" 3>&1 1>&2 2>&3)
 
+    if [ $? -eq 1 ]; then
+        main
+    fi
+
 # Replace the value of file_url with the value of the file_url environment variable
 
     if grep -q "^file_url=" ".env" ; then
@@ -88,6 +96,10 @@ download_file_with_best_dns() {
     save_filepath=$(echo "$file_url" | grep -o '[^/]*$')
     save_filepath=$HOME/Downloads/$save_filepath
     save_filepath=$(whiptail --title "save file as " --inputbox "choose the location to save the file" 15 60 "$save_filepath" 3>&1 1>&2 2>&3)
+
+    if [ $? -eq 1 ]; then
+        main
+    fi    
 
     choices=$(whiptail --title "choose engine otherwise it runs on system" --checklist "Choose options:" 15 60 1 \
 	    "docker" "(suggested)" ON \
