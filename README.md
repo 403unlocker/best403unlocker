@@ -97,7 +97,8 @@ wget -c https://raw.githubusercontent.com/ArmanTaheriGhaleTaki/best403unlocker/m
 ```
 
 
-
+## credit 
+thank [AKishmiish](https://github.com/Kishmiish) for adding TUI to this projcet
 ## Contact
 
 My social media - [@armondy🙄](https://twitter.com/taherighaletaki) - armantahery1381@gmail.com

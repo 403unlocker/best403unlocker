@@ -45,16 +45,3 @@ echo best dns server is `sort -rn database| head -1| cut -d'/' -f3 | tee -a outp
 echo '*********************'
 rm database
 cat /etc/resolv.conf.bakup > /etc/resolv.conf
-
- then
-change_dns $i
-download $i
-download_speed $i
-	fi
-done
-echo '*********************'
-echo best dns server is `sort -rn database| head -1| cut -d'/' -f3 | tee -a output`
-echo '*********************'
-rm database
-cat /etc/resolv.conf.bakup > /etc/resolv.conf
-
