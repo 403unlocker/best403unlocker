@@ -1,3 +1,15 @@
+# [2.0.0](https://github.com/ArmanTaheriGhaleTaki/best403unlocker/compare/1.3.0...2.0.0) (2024-05-26)
+
+
+### Performance Improvements
+
+* **TUI:** Add TUI ([b920d5f](https://github.com/ArmanTaheriGhaleTaki/best403unlocker/commit/b920d5f5d42254d16a10d699185ee7b0a35d743b))
+
+
+### BREAKING CHANGES
+
+* **TUI:** TUI is Added.
+
 # [1.3.0](https://github.com/ArmanTaheriGhaleTaki/best403unlocker/compare/1.2.0...1.3.0) (2024-05-15)
 
 
