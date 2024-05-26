@@ -58,3 +58,4 @@ echo best dns server is `sort -rn database| head -1| cut -d'/' -f3 | tee -a outp
 echo '*********************'
 rm database
 cat /etc/resolv.conf.bakup > /etc/resolv.conf
+
