@@ -1,11 +1,25 @@
+#!/usr/bin/env bash
+DATABASE=best403unlocker_database_$(date +%s)
+DATABASE_PATH=/tmp/$DATABASE
 # Functions
+check_run_with_root_accsses(){
+if [ "$EUID" -ne 0 ]; then
+  echo "Please run this script as root (sudo)"
+  exit 1
+fi
+}
+check_required_packages_is_installed(){
+       if ! [ -x "$(command -v wget)" ]
+then
+echo "wget is not installed" >&2
+exit 1
+fi
+}
 check_and_source_env() {
-if  [ -z "$dns" ]; then
-    if [ ! -f ./.env ]; then
-            wget -c https://raw.githubusercontent.com/ArmanTaheriGhaleTaki/best403unlocker/main/.env
-    fi
- source .env
+    if [ ! -f /etc/best403unlocker.conf ]; then
+    wget -c https://raw.githubusercontent.com/ArmanTaheriGhaleTaki/best403unlocker/main/.env -O /etc/best403unlocker.conf
  fi
+source /etc/best403unlocker.conf
 }
 
 check_ip() {
@@ -29,21 +43,25 @@ function change_dns () {
 }
 
 function download() {
-    timeout $timeout wget -q -O /tmp/$1  --no-dns-cache $file_url 
+    timeout $timeout wget -q -O /tmp/$1  --no-dns-cache $file_url
 }
 
 function download_speed() {
-du -s /tmp/$1 >> database
+du -s /tmp/$1 >> $DATABASE_PATH
 rm /tmp/$1
 }
 
-
-
+loggin(){
+    echo "$(date '+%Y-%m-%d %H:%M:%S') "
+    sed -i s/"\/tmp\/"//g $DATABASE_PATH
+}
 
 
 # Execute the functions
+check_run_with_root_accsses
+check_required_packages_is_installed
 check_and_source_env
-touch database
+touch touch $DATABASE_PATH
 cp /etc/resolv.conf /etc/resolv.conf.bakup
 for i in $dns
 do
@@ -53,9 +71,17 @@ download $i
 download_speed $i
 	fi
 done
-echo '*********************'
-echo best dns server is `sort -rn database| head -1| cut -d'/' -f3 | tee -a output`
-echo '*********************'
-rm database
-cat /etc/resolv.conf.bakup > /etc/resolv.conf
+is_network_working=$( sort -rn $DATABASE_PATH | head -1|cut -d $'\t' -f1)
 
+if [[ "$is_network_working" -eq 0 ]]; then
+echo '*********************'
+echo 'Network is not reachable'
+echo '*********************'
+else
+echo '*********************'
+echo best dns server is `sort -rn $DATABASE_PATH| head -1| cut -d'/' -f3`
+echo '*********************'
+fi
+loggin >> /var/log/best403unlocker.log
+cat /etc/resolv.conf.bakup > /etc/resolv.conf
+rm /etc/resolv.conf.bakup
