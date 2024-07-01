@@ -5,7 +5,13 @@
 I had so many challenges in choosing the best DNS sni proxy server that fits my internet service provider so I developed an script that tests the speed of the DNSes so I won't waste my time on finding the best DNS server.
 
 
-
+## Installation
+ You can install the package using apt package manager easly
+ ```bash
+sudo add-apt-repository ppa:pourpasand/403unlocker
+sudo apt update
+sudo apt install best403unlocker
+```
 <!-- GETTING STARTED -->
 
 ## Best403Unlocker TUI
@@ -19,29 +25,6 @@ Best403Unlocker TUI is a bash script-based Text User Interface (TUI) designed to
 - **DNS Analyzer**: Identify the fastest DNS servers and optionally set your system to use them.
 - **File Downloader**: Download files with optimized DNS settings to ensure the fastest possible download speeds.
 
-## Prerequisites
-
-- whiptail:
-    ```bash
-    sudo apt-get install whiptail
-    ```
-
-## Getting Started with TUI
-
-### Setup
-
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/ArmanTaheriGhaleTaki/best403unlocker.git
-   cd best403unlocker
-   ```
-
-### Running the Script
-
-Execute the script:
-```bash
-bash main.sh
-```
 
 ## Usage
 
@@ -53,6 +36,22 @@ When you run the script, a menu will appear with the following options:
 - **Exit**: Exit the program.
 
 
+## Getting Started with TUI
+
+### Setup
+
+1. Clone the repository:
+   ```bash
+   git clone --depth 1 https://github.com/ArmanTaheriGhaleTaki/best403unlocker.git
+   cd best403unlocker
+   ```
+
+### Running the Script
+
+Execute the script:
+```bash
+bash best403unlocker-tui
+```
 
 ### DNS Analyzer
 
@@ -78,7 +77,7 @@ You can use this script with **docker** or run in **baremetal**
 
 Also you can run this script on **baremetal** with **sudo** privilege
 ```sh
-wget -c https://raw.githubusercontent.com/ArmanTaheriGhaleTaki/best403unlocker/main/bash.sh && sudo bash bash.sh
+wget -c https://raw.githubusercontent.com/ArmanTaheriGhaleTaki/best403unlocker/main/best403unlocker && sudo bash best403unlocker
 ```
 
 ## Docker
@@ -98,7 +97,7 @@ wget -c https://raw.githubusercontent.com/ArmanTaheriGhaleTaki/best403unlocker/m
 
 
 ## credit
-thank [AKishmiish](https://github.com/Kishmiish) for adding TUI to this projcet
+Thank [AKishmiish](https://github.com/Kishmiish) for adding TUI to this projcet
 ## Contact
 
 My social media - [@armondy🙄](https://twitter.com/taherighaletaki) - armantahery1381@gmail.com
