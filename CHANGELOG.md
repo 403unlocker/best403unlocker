@@ -1,3 +1,18 @@
+# [3.0.0](https://github.com/ArmanTaheriGhaleTaki/best403unlocker/compare/2.0.0...3.0.0) (2024-07-01)
+
+
+* Feat/portability ([#26](https://github.com/ArmanTaheriGhaleTaki/best403unlocker/issues/26)) ([7426521](https://github.com/ArmanTaheriGhaleTaki/best403unlocker/commit/7426521fdd959bfab2183e9ae5d3e696a426e749))
+
+
+### BREAKING CHANGES
+
+* script is now uses config file and only runs with root access
+
+* fix(): make Dockerfile compatible with new changes
+
+* chore(): change .env to best403unlocker.conf
+* Add config file to /etc/ and Make the script idempotent .
+
 # [2.0.0](https://github.com/ArmanTaheriGhaleTaki/best403unlocker/compare/1.3.0...2.0.0) (2024-05-26)
 
 
