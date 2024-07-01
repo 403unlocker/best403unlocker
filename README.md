@@ -83,17 +83,17 @@ wget -c https://raw.githubusercontent.com/ArmanTaheriGhaleTaki/best403unlocker/m
 
 ## Docker
 
-You only need **docker** installed and you can edit variables in [.env](https://github.com/ArmanTaheriGhaleTaki/best403unlocker/blob/main/.env) for your needs.
+You only need **docker** installed and you can edit variables in [best403unlocker.conf](https://github.com/ArmanTaheriGhaleTaki/best403unlocker/blob/main/best403unlocker.conf) for your needs.
 
 ```sh
-git clone --depth 1 https://github.com/ArmanTaheriGhaleTaki/best403unlocker/ && cd best403unlocker && docker build -t best403unlocker . && docker run --env-file .env best403unlocker
+git clone --depth 1 https://github.com/ArmanTaheriGhaleTaki/best403unlocker/ && cd best403unlocker && docker build -t best403unlocker . && docker run --env-file best403unlocker.conf best403unlocker
 ```
 
 or you can use built image uploaded in dockerhub  
- _for that case you need to use [.env](https://github.com/ArmanTaheriGhaleTaki/best403unlocker/blob/main/.env) at run time_
+ _for that case you need to use [best403unlocker.conf](https://github.com/ArmanTaheriGhaleTaki/best403unlocker/blob/main/best403unlocker.conf) at run time_
 
 ```sh
-wget -c https://raw.githubusercontent.com/ArmanTaheriGhaleTaki/best403unlocker/main/.env && docker run --env-file .env armantaherighaletaki/best403unlocker
+wget -c https://raw.githubusercontent.com/ArmanTaheriGhaleTaki/best403unlocker/main/best403unlocker.conf && docker run --env-file best403unlocker.conf armantaherighaletaki/best403unlocker
 ```
 
 
