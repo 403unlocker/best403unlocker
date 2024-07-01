@@ -1,5 +1,6 @@
-#!/bin/bash
-source best403unlocker.conf
+#!/usr/bin/env bash
+CONFIG_FILE="/etc/best403unlocker.conf"
+LOG_FILE="/var/log/best403unlocker-tui.log"
 
 # Function to display the main menu
 main_menu() {
@@ -13,13 +14,13 @@ main_menu() {
 
     case "$choice" in
         "Run DNS analyzer")
-          best_dns_finder 
+          best_dns_finder
             ;;
         "Save file")
            download_file_with_best_dns
             ;;
         "Advance setting")
-            disconnect_network
+            change_settings
             ;;
         "Exit")
             exit
@@ -38,8 +39,8 @@ best_dns_finder() {
 
 # Replace the value of file_url with the value of the file_url environment variable
 
-    if grep -q "^file_url=" "best403unlocker.conf" ; then
-    sed -i "s|^file_url=.*|file_url=$file_url|" best403unlocker.conf
+    if grep -q "^file_url=" "$CONFIG_FILE" ; then
+    sed -i "s|^file_url=.*|file_url=$file_url|" $CONFIG_FILE
     fi
 
     choices=$(whiptail --title "choose engine otherwise it runs on system" --checklist "Choose options:" 15 60 1 \
@@ -49,14 +50,14 @@ best_dns_finder() {
     selected_options=($(echo $choices | tr -d '"'))
     # Check if "docker" is in the selected options
     if [[ " ${selected_options[@]} " =~ " docker " ]]; then
-	docker run --env-file best403unlocker.conf armantaherighaletaki/best403unlocker 2>&1 | tee log.txt
+	docker run --env-file $CONFIG_FILE armantaherighaletaki/best403unlocker 2>&1 | tee $LOG_FILE
     status=$?
 
-    if [ $status -eq 0 ] && grep -q permission log.txt; then
+    if [ $status -eq 0 ] && grep -q permission $LOG_FILE; then
         password_checker
-        echo "$password" | sudo -S docker run --env-file best403unlocker.conf armantaherighaletaki/best403unlocker | tee log.txt 2>&1
-    elif [ $status -eq 0 ]; then
-        whiptail --title "Error" --yesno "An error occurred. See log.txt for more info.\nDo you want to try again?" 15 60
+        echo "$password" | sudo -S docker run --env-file $CONFIG_FILE armantaherighaletaki/best403unlocker | tee $LOG_FILE 2>&1
+    elif [ $status -nq 0 ]; then
+        whiptail --title "Error" --yesno "An error occurred. See $LOG_FILE for more info.\nDo you want to try again?" 15 60
         status=$?
         if [ $status -eq 0 ]; then
             best_dns_finder
@@ -64,19 +65,19 @@ best_dns_finder() {
             main
         fi
     fi
-    
+
     else
     password_checker
-	wget -c https://raw.githubusercontent.com/ArmanTaheriGhaleTaki/best403unlocker/main/bash.sh && echo $password | sudo -S bash bash.sh  | tee log.txt 2>&1
+	best403unlocker  | tee $LOG_FILE
     fi
-	DNS=$(grep best log.txt| cut -d' ' -f5 )
+	DNS=$(grep best $LOG_FILE| cut -d' ' -f5 )
 
     whiptail --title "DNS analyzer" --msgbox "Best DNS:\n$DNS" 15 60
 
     selected_options=($(echo $choices | tr -d '"'))
     if whiptail --title "Confirmation" --yesno "set DNS to system" 10 60 ;then
         password_checker
-        echo $password | sudo -S bash -c "echo 'nameserver $DNS' > /run/systemd/resolve/stub-resolv.conf"
+        echo $password | sudo -S bash -c "echo 'nameserver $DNS' > /etc/resolv.conf"
     fi
 }
 
@@ -90,8 +91,8 @@ download_file_with_best_dns() {
 
 # Replace the value of file_url with the value of the file_url environment variable
 
-    if grep -q "^file_url=" "best403unlocker.conf" ; then
-    sed -i "s|^file_url=.*|file_url=$file_url|" best403unlocker.conf
+    if grep -q "^file_url=" "$CONFIG_FILE" ; then
+    sed -i "s|^file_url=.*|file_url=$file_url|" $CONFIG_FILE
     fi
     save_filepath=$(echo "$file_url" | grep -o '[^/]*$')
     save_filepath=$HOME/Downloads/$save_filepath
@@ -99,7 +100,7 @@ download_file_with_best_dns() {
 
     if [ $? -eq 1 ]; then
         main
-    fi    
+    fi
 
     choices=$(whiptail --title "choose engine otherwise it runs on system" --checklist "Choose options:" 15 60 1 \
 	    "docker" "(suggested)" ON \
@@ -108,28 +109,36 @@ download_file_with_best_dns() {
     selected_options=($(echo $choices | tr -d '"'))
     # Check if "docker" is in the selected options
     if [[ " ${selected_options[@]} " =~ " docker " ]]; then
-	docker run --env-file best403unlocker.conf armantaherighaletaki/best403unlocker 2>&1 | tee log.txt
+	docker run --env-file $CONFIG_FILE armantaherighaletaki/best403unlocker 2>&1 | tee $LOG_FILE
     status=$?
-    
-    if [ $status -eq 0 ] && grep -q permission log.txt; then
+
+    if [ $status -eq 0 ] && grep -q permission $LOG_FILE; then
         password_checker
-        echo "$password" | sudo -S docker run --env-file best403unlocker.conf armantaherighaletaki/best403unlocker | tee log.txt 2>&1
+        echo "$password" | sudo -S docker run --env-file $CONFIG_FILE armantaherighaletaki/best403unlocker | tee $LOG_FILE 2>&1
     fi
-    
+
     else
     password_checker
-	wget -c https://raw.githubusercontent.com/ArmanTaheriGhaleTaki/best403unlocker/main/bash.sh && echo $password | sudo -S bash bash.sh  | tee log.txt 2>&1
+    best403unlocker | tee $LOG_FILE
+
     fi
-	DNS=$(grep best log.txt| cut -d' ' -f5 )
+	DNS=$(grep best $LOG_FILE| cut -d' ' -f5 )
 
     password_checker
-    echo "$password" | sudo -S bash -c "echo 'nameserver $DNS' > /run/systemd/resolve/stub-resolv.conf"
-    wget --no-dns-cache $file_url -O $save_filepath 
-    echo "$password" | sudo -S bash -c "cp /etc/resolv.conf.bakup /run/systemd/resolve/stub-resolv.conf"
+    echo "$password" | sudo -S bash -c "cp /etc/resolv.conf /etc/resolv.conf.bakup"
+    echo "$password" | sudo -S bash -c "echo 'nameserver $DNS' > /etc/resolv.conf"
+    wget --no-dns-cache $file_url -O $save_filepath  2>&1 | tee $LOG_FILE
+    if  grep -q "No such file or directory" $LOG_FILE ; then
+    whiptail --title "Error" --msgbox "An error occurred. See $LOG_FILE for more info." 15 60
+    else
+    whiptail --title "Download Complete" --msgbox "The download has been completed successfully!" 15 60
+    fi
+    echo "$password" | sudo -S bash -c "mv /etc/resolv.conf.bakup /etc/resolv.conf"
+
 }
 
-disconnect_network() {
-	echo hello 
+change_settings() {
+ echo 'hello'
 }
 
 # Checks the password if a sudo command is executed
@@ -151,8 +160,23 @@ password_checker(){
     fi
 }
 
+check_and_source_env() {
+    if [ ! -f $CONFIG_FILE ]; then
+    wget -cq https://raw.githubusercontent.com/ArmanTaheriGhaleTaki/best403unlocker/main/.env -O $CONFIG_FILE
+ fi
+source $CONFIG_FILE
+}
+check_run_with_root_accsses(){
+if [ "$EUID" -ne 0 ]; then
+  echo "Please run this script as root (sudo)"
+  exit 1
+fi
+}
 # Main function
 main() {
+
+    check_run_with_root_accsses
+    check_and_source_env
     while true; do
         main_menu
     done
@@ -160,4 +184,3 @@ main() {
 
 # Main execution
 main
-
