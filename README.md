@@ -71,10 +71,10 @@ When you run the script, a menu will appear with the following options:
 
 ## Getting Started with CLI
 
-You can use this script with **docker** or run in **baremetal**   
+You can use this script with **docker** or run in **baremetal**
 
 ## Baremetal
-![output](https://github.com/ArmanTaheriGhaleTaki/speed-test-dns/assets/88885103/d83c954e-5f3c-434e-ae4b-f119d69a4220)   
+![output](https://github.com/ArmanTaheriGhaleTaki/speed-test-dns/assets/88885103/d83c954e-5f3c-434e-ae4b-f119d69a4220)
 
 Also you can run this script on **baremetal** with **sudo** privilege
 ```sh
@@ -89,7 +89,7 @@ You only need **docker** installed and you can edit variables in [best403unlocke
 git clone --depth 1 https://github.com/ArmanTaheriGhaleTaki/best403unlocker/ && cd best403unlocker && docker build -t best403unlocker . && docker run --env-file best403unlocker.conf best403unlocker
 ```
 
-or you can use built image uploaded in dockerhub  
+or you can use built image uploaded in dockerhub
  _for that case you need to use [best403unlocker.conf](https://github.com/ArmanTaheriGhaleTaki/best403unlocker/blob/main/best403unlocker.conf) at run time_
 
 ```sh
@@ -97,7 +97,7 @@ wget -c https://raw.githubusercontent.com/ArmanTaheriGhaleTaki/best403unlocker/m
 ```
 
 
-## credit 
+## credit
 thank [AKishmiish](https://github.com/Kishmiish) for adding TUI to this projcet
 ## Contact
 
