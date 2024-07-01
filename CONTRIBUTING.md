@@ -1,4 +1,4 @@
-you can add new DNS servers in [.env](https://github.com/ArmanTaheriGhaleTaki/speed-test-dns/blob/main/.env) with the following format
+you can add new DNS servers in [best403unlocker.conf](https://github.com/ArmanTaheriGhaleTaki/speed-test-dns/blob/main/best403unlocker.conf) with the following format
 ```
 #########################
 #https://example.com/

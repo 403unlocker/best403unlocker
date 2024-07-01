@@ -1,10 +1,10 @@
 # Functions
 check_and_source_env() {
 if  [ -z "$dns" ]; then
-    if [ ! -f ./.env ]; then
-            wget -c https://raw.githubusercontent.com/ArmanTaheriGhaleTaki/best403unlocker/main/.env
+    if [ ! -f ./best403unlocker.conf ]; then
+            wget -c https://raw.githubusercontent.com/ArmanTaheriGhaleTaki/best403unlocker/main/best403unlocker.conf
     fi
- source .env
+ source best403unlocker.conf
  fi
 }
 

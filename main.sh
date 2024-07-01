@@ -1,5 +1,5 @@
 #!/bin/bash
-source .env
+source best403unlocker.conf
 
 # Function to display the main menu
 main_menu() {
@@ -38,8 +38,8 @@ best_dns_finder() {
 
 # Replace the value of file_url with the value of the file_url environment variable
 
-    if grep -q "^file_url=" ".env" ; then
-    sed -i "s|^file_url=.*|file_url=$file_url|" .env
+    if grep -q "^file_url=" "best403unlocker.conf" ; then
+    sed -i "s|^file_url=.*|file_url=$file_url|" best403unlocker.conf
     fi
 
     choices=$(whiptail --title "choose engine otherwise it runs on system" --checklist "Choose options:" 15 60 1 \
@@ -49,12 +49,12 @@ best_dns_finder() {
     selected_options=($(echo $choices | tr -d '"'))
     # Check if "docker" is in the selected options
     if [[ " ${selected_options[@]} " =~ " docker " ]]; then
-	docker run --env-file .env armantaherighaletaki/best403unlocker 2>&1 | tee log.txt
+	docker run --env-file best403unlocker.conf armantaherighaletaki/best403unlocker 2>&1 | tee log.txt
     status=$?
 
     if [ $status -eq 0 ] && grep -q permission log.txt; then
         password_checker
-        echo "$password" | sudo -S docker run --env-file .env armantaherighaletaki/best403unlocker | tee log.txt 2>&1
+        echo "$password" | sudo -S docker run --env-file best403unlocker.conf armantaherighaletaki/best403unlocker | tee log.txt 2>&1
     elif [ $status -eq 0 ]; then
         whiptail --title "Error" --yesno "An error occurred. See log.txt for more info.\nDo you want to try again?" 15 60
         status=$?
@@ -90,8 +90,8 @@ download_file_with_best_dns() {
 
 # Replace the value of file_url with the value of the file_url environment variable
 
-    if grep -q "^file_url=" ".env" ; then
-    sed -i "s|^file_url=.*|file_url=$file_url|" .env
+    if grep -q "^file_url=" "best403unlocker.conf" ; then
+    sed -i "s|^file_url=.*|file_url=$file_url|" best403unlocker.conf
     fi
     save_filepath=$(echo "$file_url" | grep -o '[^/]*$')
     save_filepath=$HOME/Downloads/$save_filepath
@@ -108,12 +108,12 @@ download_file_with_best_dns() {
     selected_options=($(echo $choices | tr -d '"'))
     # Check if "docker" is in the selected options
     if [[ " ${selected_options[@]} " =~ " docker " ]]; then
-	docker run --env-file .env armantaherighaletaki/best403unlocker 2>&1 | tee log.txt
+	docker run --env-file best403unlocker.conf armantaherighaletaki/best403unlocker 2>&1 | tee log.txt
     status=$?
     
     if [ $status -eq 0 ] && grep -q permission log.txt; then
         password_checker
-        echo "$password" | sudo -S docker run --env-file .env armantaherighaletaki/best403unlocker | tee log.txt 2>&1
+        echo "$password" | sudo -S docker run --env-file best403unlocker.conf armantaherighaletaki/best403unlocker | tee log.txt 2>&1
     fi
     
     else
