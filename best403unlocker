@@ -15,35 +15,38 @@ install_required_packages(){
         case $ID in
               debian|ubuntu|mint|elementary)
                 apt update -y
-                apt install -y wget
+                apt install -y $1
                 ;;
               arch|manjaro|parch)
-                pacman -Sy --noconfirm wget
+                pacman -Sy --noconfirm $1
                 ;;
               fedora|rhel|centos|rocky|almalinux)
-                dnf install -y wget
+                dnf install -y $1
                 ;;
               suse|opensuse)
-                zypper install -y wget
+                zypper install -y $1
                 ;;
               alpine)
                 apk update
-                apk add --no-cache wget
+                apk add --no-cache $1
                 ;;
               *)
-                echo "Unsupported OS. Please install wget manually." >& 2
+                echo "Unsupported OS. Please install $1 manually." >& 2
                 exit 1
         esac
     else
-        echo "Unsupported OS. Please install wget manually." >& 2
+        echo "Unsupported OS. Please install $1 manually." >& 2
         exit 1
     fi
 }
 check_required_packages_is_installed(){
-       if ! [ -x "$(command -v wget)" ]
+PACKAGES="wget skopeo"
+for package in $PACKAGES
+do
+       if ! [ -x "$(command -v $package)" ]
 then
-    echo "wget is not installed"
-    read -p "Do you want to us install wget or cancel it? [Y/n]: " do_install
+    echo "$package is not installed"
+    read -p "Do you want to us install $package or cancel it? [Y/n]: " do_install
     
     if [[ -z $do_install ||
         $do_install == "Y" ||
@@ -51,12 +54,13 @@ then
         $do_install == "Yes" ||
         $do_install == "yes"
     ]]; then
-      install_required_packages
+      install_required_packages $package
     else
-          echo "Please install wget manually" >& 2
+          echo "Please install $package manually" >& 2
           exit 1
     fi
 fi
+done
 }
 check_and_source_env() {
     if [ ! -f /etc/best403unlocker.conf ]; then
