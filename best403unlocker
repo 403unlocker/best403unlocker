@@ -27,7 +27,8 @@ install_required_packages(){
                 zypper install -y wget
                 ;;
               alpine)
-                apk add wget
+                apk update
+                apk add --no-cache wget
                 ;;
               *)
                 echo "Unsupported OS. Please install wget manually." >& 2
