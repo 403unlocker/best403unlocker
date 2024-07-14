@@ -55,7 +55,7 @@ fi
 }
 check_and_source_env() {
     if [ ! -f /etc/best403unlocker.conf ]; then
-    wget -c https://raw.githubusercontent.com/ArmanTaheriGhaleTaki/best403unlocker/main/.env -O /etc/best403unlocker.conf
+    wget -c https://raw.githubusercontent.com/403unlocker/best403unlocker/main/best403unlocker.conf -O /etc/best403unlocker.conf
  fi
 source /etc/best403unlocker.conf
 }
