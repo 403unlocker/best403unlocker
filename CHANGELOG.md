@@ -1,3 +1,15 @@
+# [3.1.0](https://github.com/403unlocker/best403unlocker/compare/3.0.0...3.1.0) (2024-07-14)
+
+
+### Bug Fixes
+
+*  delete extra option ([5833c66](https://github.com/403unlocker/best403unlocker/commit/5833c66e7aa999ce75e944507a55193a30849424))
+
+
+### Features
+
+* add install_required_packages function + fix /etc/best403unlocker.conf url ([#28](https://github.com/403unlocker/best403unlocker/issues/28)) ([5198e9d](https://github.com/403unlocker/best403unlocker/commit/5198e9d1e97c9e62e1d15c76b1d5f094c9335899))
+
 # [3.0.0](https://github.com/ArmanTaheriGhaleTaki/best403unlocker/compare/2.0.0...3.0.0) (2024-07-01)
 
 
