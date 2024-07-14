@@ -13,7 +13,8 @@ install_required_packages(){
         source /etc/os-release
 
         case $ID in
-              debian|ubuntu|mint|elementary|alpine)
+              debian|ubuntu|mint|elementary)
+                apt update -y
                 apt install -y wget
                 ;;
               arch|manjaro|parch)
@@ -24,6 +25,9 @@ install_required_packages(){
                 ;;
               suse|opensuse)
                 zypper install -y wget
+                ;;
+              alpine)
+                apk add wget
                 ;;
               *)
                 echo "Unsupported OS. Please install wget manually." >& 2
