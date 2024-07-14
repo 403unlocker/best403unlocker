@@ -1,3 +1,10 @@
+# [3.3.0](https://github.com/403unlocker/best403unlocker/compare/3.2.0...3.3.0) (2024-07-14)
+
+
+### Features
+
+* Add an option for analizing docker images ([e86287a](https://github.com/403unlocker/best403unlocker/commit/e86287a8d287e70ab0a0fe56293bd91a57a6023e))
+
 # [3.2.0](https://github.com/403unlocker/best403unlocker/compare/3.1.0...3.2.0) (2024-07-14)
 
 
