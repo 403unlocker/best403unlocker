@@ -104,7 +104,7 @@ loggin(){
 check_run_with_root_accsses
 check_required_packages_is_installed
 check_and_source_env
-touch touch $DATABASE_PATH
+touch $DATABASE_PATH
 cp /etc/resolv.conf /etc/resolv.conf.bakup
 for i in $dns
 do
