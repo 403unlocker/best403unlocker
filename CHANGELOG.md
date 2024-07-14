@@ -1,3 +1,10 @@
+# [3.2.0](https://github.com/403unlocker/best403unlocker/compare/3.1.0...3.2.0) (2024-07-14)
+
+
+### Features
+
+* show which URL is being analyzed ([8f48e1a](https://github.com/403unlocker/best403unlocker/commit/8f48e1a0f03cfa2d71e4e0004b5802cf0bd2f07d))
+
 # [3.1.0](https://github.com/403unlocker/best403unlocker/compare/3.0.0...3.1.0) (2024-07-14)
 
 
