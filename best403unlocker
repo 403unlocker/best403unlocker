@@ -13,7 +13,7 @@ install_required_packages(){
         source /etc/os-release
 
         case $ID in
-              debian|ubuntu|mint|elementary)
+              debian|ubuntu|mint|elementary|alpine)
                 apt install -y wget
                 ;;
               arch|manjaro|parch)
