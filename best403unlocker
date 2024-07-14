@@ -8,11 +8,49 @@ if [ "$EUID" -ne 0 ]; then
   exit 1
 fi
 }
+install_required_packages(){
+    if [[ -f /etc/os-release  ]]; then
+        source /etc/os-release
+
+        case $ID in
+              debian|ubuntu|mint|elementary)
+                apt install -y wget
+                ;;
+              arch|manjaro|parch)
+                pacman -Sy --noconfirm wget
+                ;;
+              fedora|rhel|centos|rocky|almalinux)
+                dnf install -y wget
+                ;;
+              suse|opensuse)
+                zypper install -y wget
+                ;;
+              *)
+                echo "Unsupported OS. Please install wget manually." >& 2
+                exit 1
+        esac
+    else
+        echo "Unsupported OS. Please install wget manually." >& 2
+        exit 1
+    fi
+}
 check_required_packages_is_installed(){
        if ! [ -x "$(command -v wget)" ]
 then
-echo "wget is not installed" >&2
-exit 1
+    echo "wget is not installed"
+    read -p "Do you want to us install wget or cancel it? [Y/n]: " do_install
+    
+    if [[ -z $do_install ||
+        $do_install == "Y" ||
+        $do_install == "y" ||
+        $do_install == "Yes" ||
+        $do_install == "yes"
+    ]]; then
+      install_required_packages
+    else
+          echo "Please install wget manually" >& 2
+          exit 1
+    fi
 fi
 }
 check_and_source_env() {
