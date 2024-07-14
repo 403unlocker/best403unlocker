@@ -86,12 +86,17 @@ function change_dns () {
 }
 
 function download() {
+if [[ $file_url == docker://* ]]; then
+    timeout $timeout skopeo copy $file_url dir:/tmp/$1 > /dev/null 2>&1
+else
     timeout $timeout wget -q -O /tmp/$1  --no-dns-cache $file_url
+fi
+
 }
 
 function download_speed() {
 du -s /tmp/$1 >> $DATABASE_PATH
-rm /tmp/$1
+rm -rf /tmp/$1
 }
 
 loggin(){
