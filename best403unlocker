@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 DATABASE=best403unlocker_database_$(date +%s)
 DATABASE_PATH=/tmp/$DATABASE
+trap 'echo -e "\n";sudo cat /etc/resolv.conf.bakup > /etc/resolv.conf;rm /etc/resolv.conf.bakup; echo -e "/etc/resolv.conf is changed to default.\nExiting..."; exit' SIGINT
 # Functions
 check_run_with_root_accsses(){
 if [ "$EUID" -ne 0 ]; then
