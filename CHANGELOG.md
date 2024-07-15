@@ -1,3 +1,10 @@
+# [3.4.0](https://github.com/403unlocker/best403unlocker/compare/3.3.1...3.4.0) (2024-07-15)
+
+
+### Features
+
+* Add cli feature to compatible with macOS  ([#33](https://github.com/403unlocker/best403unlocker/issues/33)) ([55f911d](https://github.com/403unlocker/best403unlocker/commit/55f911dd10dbd66d218c2ab02dbff143ab408a03))
+
 ## [3.3.1](https://github.com/403unlocker/best403unlocker/compare/3.3.0...3.3.1) (2024-07-15)
 
 
