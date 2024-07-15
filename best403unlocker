@@ -35,6 +35,9 @@ install_required_packages(){
                 echo "Unsupported OS. Please install $1 manually." >& 2
                 exit 1
         esac
+    elif [[ "$OSTYPE" == "darwin"* ]]; then
+        sudo -u $(logname) brew update
+        sudo -u $(logname) brew install $1
     else
         echo "Unsupported OS. Please install $1 manually." >& 2
         exit 1
