@@ -1,3 +1,10 @@
+## [3.3.1](https://github.com/403unlocker/best403unlocker/compare/3.3.0...3.3.1) (2024-07-15)
+
+
+### Bug Fixes
+
+* Add trap to restore resolv.conf.backup  on SIGINT ([#32](https://github.com/403unlocker/best403unlocker/issues/32)) ([953dcf3](https://github.com/403unlocker/best403unlocker/commit/953dcf3b0d1011bc73daa92d19cf5b3479bd709a))
+
 # [3.3.0](https://github.com/403unlocker/best403unlocker/compare/3.2.0...3.3.0) (2024-07-14)
 
 
