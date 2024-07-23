@@ -1,3 +1,10 @@
+## [3.4.1](https://github.com/403unlocker/best403unlocker/compare/3.4.0...3.4.1) (2024-07-23)
+
+
+### Bug Fixes
+
+* fix typo on tui ([#35](https://github.com/403unlocker/best403unlocker/issues/35)) ([ddf1be9](https://github.com/403unlocker/best403unlocker/commit/ddf1be9be17d78adc4c9ad87f7627a13482ee4b4))
+
 # [3.4.0](https://github.com/403unlocker/best403unlocker/compare/3.3.1...3.4.0) (2024-07-15)
 
 
