@@ -1,3 +1,10 @@
+## [3.4.2](https://github.com/403unlocker/best403unlocker/compare/3.4.1...3.4.2) (2024-07-26)
+
+
+### Bug Fixes
+
+* Update DNSPro ([#34](https://github.com/403unlocker/best403unlocker/issues/34)) ([e19abb0](https://github.com/403unlocker/best403unlocker/commit/e19abb09962dd75449d573b03a51b5705ca04ab8))
+
 ## [3.4.1](https://github.com/403unlocker/best403unlocker/compare/3.4.0...3.4.1) (2024-07-23)
 
 
