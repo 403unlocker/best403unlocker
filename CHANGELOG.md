@@ -1,3 +1,10 @@
+# [3.5.0](https://github.com/403unlocker/best403unlocker/compare/3.4.2...3.5.0) (2024-07-30)
+
+
+### Features
+
+* Add new darzg.ir ([#36](https://github.com/403unlocker/best403unlocker/issues/36)) ([e80fe94](https://github.com/403unlocker/best403unlocker/commit/e80fe9471b2fb272458c4808855ce50c1064e558))
+
 ## [3.4.2](https://github.com/403unlocker/best403unlocker/compare/3.4.1...3.4.2) (2024-07-26)
 
 
