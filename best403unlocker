@@ -3,12 +3,20 @@ DATABASE=best403unlocker_database_$(date +%s)
 DATABASE_PATH=/tmp/$DATABASE
 trap 'echo -e "\n";sudo cat /etc/resolv.conf.bakup > /etc/resolv.conf;rm /etc/resolv.conf.bakup; echo -e "/etc/resolv.conf is changed to default.\nExiting..."; exit' SIGINT
 # Functions
-check_run_with_root_accsses(){
-if [ "$EUID" -ne 0 ]; then
-  echo "Please run this script as root (sudo)"
-  exit 1
-fi
+
+
+check_run_with_root_access() {
+    if [ "$(id -u)" -ne 0 ]; then
+        clear
+        echo "This script requires root privileges. Requesting root access..."
+        sudo -v
+        if [ $? -ne 0 ]; then
+            echo "Failed to gain root access. Please run the script as root." >&2
+            exit 1
+        fi
+    fi
 }
+
 install_required_packages(){
     if [[ -f /etc/os-release  ]]; then
         source /etc/os-release
@@ -43,29 +51,29 @@ install_required_packages(){
         exit 1
     fi
 }
-check_required_packages_is_installed(){
-PACKAGES="wget skopeo"
-for package in $PACKAGES
-do
-       if ! [ -x "$(command -v $package)" ]
-then
-    echo "$package is not installed"
-    read -p "Do you want to us install $package or cancel it? [Y/n]: " do_install
-    
-    if [[ -z $do_install ||
-        $do_install == "Y" ||
-        $do_install == "y" ||
-        $do_install == "Yes" ||
-        $do_install == "yes"
-    ]]; then
-      install_required_packages $package
-    else
-          echo "Please install $package manually" >& 2
-          exit 1
-    fi
-fi
-done
+
+check_required_packages_is_installed() {
+    local packages=("wget" "skopeo")
+    for package in "${packages[@]}"; do
+        if ! command -v "$package" &>/dev/null; then
+            echo "$package is not installed."
+            read -rp "Do you want to install $package? [Y/n]: " res
+            res=${res,,}
+            if [[ "$res" =~ ^(y|yes|)$ ]]; then
+                if install_required_packages "$package"; then
+                    echo "$package Installed."
+                else
+                    echo "Failed to install $package " >&2
+                    return 1
+                fi
+            else
+                echo "$package is required but not installed. Exiting." >&2
+                return 1
+            fi
+        fi
+    done
 }
+
 check_and_source_env() {
     if [ ! -f /etc/best403unlocker.conf ]; then
     wget -c https://raw.githubusercontent.com/403unlocker/best403unlocker/main/best403unlocker.conf -O /etc/best403unlocker.conf
@@ -101,11 +109,16 @@ else
 fi
 
 }
-
 function download_speed() {
-du -s /tmp/$1 >> $DATABASE_PATH
-rm -rf /tmp/$1
+    local file="/tmp/$1"
+    if [[ -f $file ]]; then
+        du -s "$file" >> "$DATABASE_PATH"
+        rm -rf "$file"
+    else
+        echo "File $file Not Found. Skipping speed ...." >&2
+    fi
 }
+
 
 loggin(){
     echo "$(date '+%Y-%m-%d %H:%M:%S') "
