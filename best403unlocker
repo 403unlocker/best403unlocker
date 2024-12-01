@@ -108,16 +108,16 @@ else
 fi
 
 }
-function download_speed() {
-    local file="/tmp/$1"
-    if [[ -f $file ]]; then
-        du -s "$file" >> "$DATABASE_PATH"
-        rm -rf "$file"
-    else
-        echo "File $file Not Found. Skipping speed ...." >&2
-    fi
-}
 
+function download_speed() {
+  local file="/tmp/$1"
+  if [[ -f $file || -d $file ]]; then
+    du -s "$file" >> "$DATABASE_PATH"
+    rm -rf "$file"
+  else
+    echo "File $file Not Found. Skipping speed ...." >&2
+  fi
+}
 
 loggin(){
     echo "$(date '+%Y-%m-%d %H:%M:%S') "
