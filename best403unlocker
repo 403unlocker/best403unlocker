@@ -6,12 +6,17 @@ trap 'echo -e "\n";sudo cat /etc/resolv.conf.bakup > /etc/resolv.conf;rm /etc/re
 
 
 check_run_with_root_access() {
-    if [ "$(id -u)" -ne 0 ]; then
+  if [ "$(id -u)" -ne 0 ]; then
         echo "This script requires root privileges. Requesting root access..."
-        sudo -v
-        if [ $? -ne 0 ]; then
-            echo "Failed to gain root access. Please run the script as root." >&2
-            exit 1
+
+        if ! sudo -n true 2>/dev/null; then
+            echo "Requesting password for sudo access..."
+            sudo -v
+
+            if [ $? -ne 0 ]; then
+                echo "Failed root access. Please run the script as root." >&2
+                exit 1
+            fi
         fi
     fi
 }
