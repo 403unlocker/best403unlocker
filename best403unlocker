@@ -7,7 +7,6 @@ trap 'echo -e "\n";sudo cat /etc/resolv.conf.bakup > /etc/resolv.conf;rm /etc/re
 
 check_run_with_root_access() {
     if [ "$(id -u)" -ne 0 ]; then
-        clear
         echo "This script requires root privileges. Requesting root access..."
         sudo -v
         if [ $? -ne 0 ]; then
@@ -127,7 +126,7 @@ loggin(){
 
 
 # Execute the functions
-check_run_with_root_accsses
+check_run_with_root_access
 check_required_packages_is_installed
 check_and_source_env
 echo "analyzing $file_url"
