@@ -6,8 +6,6 @@ on:
   pull_request:
     branches:
       - main 
-
-name: "Trigger: Push action"
 permissions: {}
 
 jobs:
@@ -22,4 +20,3 @@ jobs:
           SHELLCHECK_OPTS: -e SC1090 -e SC1091 -e SC2154
         with:
           version: v0.9.0
-
