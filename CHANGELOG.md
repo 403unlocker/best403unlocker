@@ -1,3 +1,10 @@
+# [3.6.0](https://github.com/403unlocker/best403unlocker/compare/3.5.0...3.6.0) (2024-12-29)
+
+
+### Features
+
+* add new DNS https://www.sheltertm.com/ ([#45](https://github.com/403unlocker/best403unlocker/issues/45)) ([5b9d095](https://github.com/403unlocker/best403unlocker/commit/5b9d0957fe582981f2047e993f02524aeb240b70))
+
 # [3.5.0](https://github.com/403unlocker/best403unlocker/compare/3.4.2...3.5.0) (2024-07-30)
 
 
