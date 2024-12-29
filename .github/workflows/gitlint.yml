@@ -1,0 +1,31 @@
+name: Gitlint
+on:
+  pull_request:
+    branches:
+      - main 
+  push:
+    branches:
+      - main 
+
+jobs:
+  gitlint:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          # Check out at the last commit (pre-automated merge, we don't care about the temporary commit for linting)
+          ref: ${{ github.event.pull_request.head.sha }}
+          # Get all history
+          fetch-depth: 0
+
+      - name: Install gitlint
+        shell: bash
+        run: |
+          python -m pip install gitlint
+
+      - name: Run gitlint
+        shell: bash
+        run: |
+          # Lint everything from the base to the latest
+          gitlint --commits "${{ github.event.pull_request.base.sha }}..HEAD"
