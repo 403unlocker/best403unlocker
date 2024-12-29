@@ -1,4 +1,4 @@
-name: Deploy
+name: upload image to dockerhub
 
 on:
   push:
